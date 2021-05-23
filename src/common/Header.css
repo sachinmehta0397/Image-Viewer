@@ -1,7 +1,8 @@
 .headerClass {
-    background-color: grey;
-    padding: 5px;
-    color: white;
-    font-size: 3rem;
-    font-family: sans-serif;
+    background-color: #263238;
+    padding: 20px 15px;
+}
+.headerLogo {
+    color: #fff;
+    font-size: 18px;
 }

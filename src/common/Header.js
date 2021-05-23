@@ -7,7 +7,7 @@ class Header extends Component {
         return (
             <div>
                 <header className="headerClass">
-                    <span>Image Viewer</span>
+                    <span className="headerLogo">Image Viewer</span>
                 </header>
             </div>
         )
