@@ -1,8 +1,38 @@
 .headerClass {
+    display: flex;
     background-color: #263238;
-    padding: 20px 15px;
+    height: 40px;
+    line-height: 40px;
+    padding: 20px;
+    align-items: center;
 }
-.headerLogo {
+#headerLogo {
     color: #fff;
     font-size: 18px;
+    text-decoration-line: none;
+}
+
+.header-searchbox{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    align-self: flex-start;
+    background-color: #c0c0c0;
+    border-radius: 4px;
+    height: 40px;
+}
+#search-icon{
+    height: 27px;
+    padding: 0px 0px 0px 10px;
+}
+#profile-icon{
+    margin-left: 40px;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border: solid;
+    border-color: white;
+    border-width: thin;
+
 }

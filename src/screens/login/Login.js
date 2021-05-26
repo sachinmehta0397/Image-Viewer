@@ -8,13 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { FormHelperText } from '@material-ui/core';
 
-
-const username = "123";
-const password = "123";
-
+//adding @material-ui card style
 const styles = theme => ({
     root: {
         padding: 50,
+        position: 'relative',
+        left: '50%',
+        top: '70px',
+        width: '300px',
+        transform: 'translateX(-50%)',
     },
     formInput: {
         '& .MuiTextField-root': {
@@ -33,16 +35,32 @@ class Login extends Component {
             password: "",
             usernameRequired: "dispNone",
             passwordRequired: "dispNone",
-            incorrectUsernamePassword: "dispNone"
+            incorrectUsernamePassword: "dispNone",
+            isLoggedIn: false
         };
     }
 
     loginClickHandler = () => {
-        this.state.userName === "" ? this.setState({usernameRequired: "dispBlock"}) : this.setState({usernameRequired:"dispNone"});
-        this.state.password === "" ? this.setState({passwordRequired: "dispBlock"}) : this.setState({passwordRequired:"dispNone"});
+        //default username and password
+        let username = "123";
+        let password = "123";
+
         if(this.state.userName === username && this.state.password === password){
             this.setState({incorrectUsernamePassword: "dispNone"});
-        }else{
+            sessionStorage.setItem('username','SachinMehta'); 
+            //access token          
+            sessionStorage.setItem("access-token", "IGQVJVckY5TnFZAQzVUTEhBeHNQdjZAQWlF1b0ppVlo1SGxmQ1g1d0U5NENaZAE5raUJwR0VFcnQ0RUhhdUNFQkRmOW9XbzAtX3ZAsWTVEMENTdTFmbGNTNGhITjRNNkhyLWFmZAEhFY0o4czFqdUZAYVHdkWAZDZD");
+            this.setState({
+                isLoggedIn: true,
+            })
+            this.props.history.push('/home');
+        }else if(this.state.userName === "" || this.state.password === ""){
+            this.state.userName === "" ? this.setState({usernameRequired: "dispBlock"}) : this.setState({usernameRequired:"dispNone"});
+            this.state.password === "" ? this.setState({passwordRequired: "dispBlock"}) : this.setState({passwordRequired:"dispNone"});    
+        } else {
+            this.state.userName === "" ? this.setState({usernameRequired: "dispBlock"}) : this.setState({usernameRequired:"dispNone"});
+            this.state.password === "" ? this.setState({passwordRequired: "dispBlock"}) : this.setState({passwordRequired:"dispNone"});
+
             this.setState({incorrectUsernamePassword: "dispBlock"})
         }
     }
@@ -57,7 +75,7 @@ class Login extends Component {
             const { classes } = this.props;
         return (
             <div>
-                <Header />
+                <Header screen={"Login"}/>
                 <div className="bodyContainer">
                 <Card className={classes.root} variant='outlined'>
                     <Typography className={classes.title} variant="h5" component="h2">
@@ -73,9 +91,9 @@ class Login extends Component {
                         <FormHelperText className={this.state.incorrectUsernamePassword}><span className="red">Incorrect username and/or password</span></FormHelperText>
                         <br/>
                         <Button variant="contained" color="primary" onClick={this.loginClickHandler}>
-                          LOGIN
+                        LOGIN
                         </Button>
-                  </form>
+                </form>
                 </Card>
                 </div>
             </div>
